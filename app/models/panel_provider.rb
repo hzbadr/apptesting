@@ -1,0 +1,2 @@
+class PanelProvider < ApplicationRecord
+end
