@@ -16,8 +16,8 @@ id, name, external_id, parent_id, secret_code, panel_provider_id
 
 
 The application should have:
-3 Countries, each with different panel provider
 3 Panel Providers
-20 Locations of any type (city, region, state, etc.)
+3 Countries, each with different panel provider
 4 Location Groups, 3 of them with different provider and 1 would belong to any of them
+20 Locations of any type (city, region, state, etc.)
 4 root Target Groups and each root should start a tree which is minimium 3 levels deep (3 of them with different provider and 1 would belong to any of them)

@@ -50,3 +50,5 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rubocop-rails'
 end
+
+gem 'mysql2'
