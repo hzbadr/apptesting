@@ -50,7 +50,7 @@ RSpec.describe V1::LocationsController, type: :controller do
   end
 
   it "return status is 422 for un authorized user" do
-    get :list, params: { country_code: country.country_code}
+    get :list, params: { country_code: country.country_code }
     expect(response.status).to eq(422)
   end
 end

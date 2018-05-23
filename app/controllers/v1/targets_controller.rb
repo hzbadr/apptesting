@@ -1,5 +1,5 @@
 class V1::TargetsController < ApplicationController
-  STRATEGIES = [LetterStrategy, ArrayStrategy, NodeStrategy]
+  STRATEGIES = [Strategy::Letter, Strategy::Array, Strategy::Node]
 
   def evaluate
     target = TargetForm.new(permitted_params[:country_code],
