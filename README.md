@@ -1,5 +1,7 @@
 ## Decisions
   * Rails v5.2.0 & Ruby v2.5.1
+
+  * I used sqlite database. 
   
   * I used JWT for authentication.
   

@@ -51,6 +51,5 @@ group :development, :test do
   gem 'rubocop-rails'
 end
 
-gem 'mysql2'
 gem 'jwt'
 gem 'rack-attack'
