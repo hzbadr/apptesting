@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_21_202518) do
+ActiveRecord::Schema.define(version: 2018_05_23_022208) do
 
   create_table "countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "country_code"
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 2018_05_21_202518) do
     t.datetime "updated_at", null: false
     t.index ["panel_provider_id"], name: "index_target_groups_on_panel_provider_id"
     t.index ["parent_id"], name: "index_target_groups_on_parent_id"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "countries", "panel_providers"
