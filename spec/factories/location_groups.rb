@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :location_group do
-    name "MyString"
-    country nil
-    panel_provider nil
+    name "location group"
+    country_id 1
+    panel_provider_id 1
   end
 end

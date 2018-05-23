@@ -1,4 +1,4 @@
-class V1::Pubilc::LocationsController < ApplicationController
+class V1::Public::LocationsController < ApplicationController
   include SetCountry
 
   def list
