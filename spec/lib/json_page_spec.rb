@@ -1,6 +1,6 @@
-require_relative '../../lib/json_page'
+require_relative '../../app/lib/page/json'
 
-RSpec.describe JsonPage do
+RSpec.describe Page::Json do
   let (:page) {
     {
       "docs" => [
@@ -25,8 +25,8 @@ RSpec.describe JsonPage do
       }]
     }
   }
-  let (:json_page_default_count) { JsonPage.new(page) }
-  let (:json_page_custom_count) { JsonPage.new(page, 0) }
+  let (:json_page_default_count) { Page::Json.new(page) }
+  let (:json_page_custom_count) { Page::Json.new(page, 0) }
 
   it "count keys having more than 10 elements as default value" do
     expect(json_page_default_count.count_valid_elements).to eq(4)

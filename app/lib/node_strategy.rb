@@ -11,6 +11,6 @@ class NodeStrategy
 
   private
     def page
-      HtmlPage.new(PageFetcher.fetch(@url))
+      Page::Html.new(PageFetcher.fetch(@url))
     end
 end

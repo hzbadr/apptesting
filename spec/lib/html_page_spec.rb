@@ -1,13 +1,13 @@
-require_relative '../../lib/html_page'
+require_relative '../../app/lib/page/html'
 
-RSpec.describe HtmlPage do
+RSpec.describe Page::Html do
 
   it "counts letters" do
     page = double('page')
     text = double('text')
     allow(text).to receive("text").and_return(" abc a 'aaa haha")
     allow(page).to receive("at").and_return(text)
-    html_page = HtmlPage.new(page)
+    html_page = Page::Html.new(page)
     expect(html_page.count_letter("a")).to eq(7)
   end
 
@@ -26,13 +26,13 @@ RSpec.describe HtmlPage do
       </html>
     HTML
     html = Nokogiri::HTML(content)
-    page = HtmlPage.new(html)
+    page = Page::Html.new(html)
     expect(page.count_nodes).to eq(6)
   end
 end
 
 
-class HtmlPageMock
+class Page::HtmlMock
   def initialize(page)
     @page = page
   end

@@ -9,6 +9,6 @@ class ArrayStrategy
 
   private
     def page
-      JsonPage.new(PageFetcher.fetch(@url, JSON))
+      Page::Json.new(PageFetcher.fetch(@url, JSON))
     end
 end
