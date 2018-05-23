@@ -36,7 +36,7 @@
 
   * The relation beteen how to calculate the price and the country was not clear. So I decided to depend on the country creation order.
 
-  * Nothing mentioned about the resonse, I returned the object as json.
+  * Nothing mentioned about the response, I returned the object as json.
 
 
 ## Test Using Postman
