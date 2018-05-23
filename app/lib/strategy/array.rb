@@ -10,7 +10,7 @@ module Strategy
 
     private
       def page
-        Page::Json.new(PageFetcher.fetch(@url, JSON))
+        Page::Json.new(Page::Fetcher.fetch(@url, JSON))
       end
   end
 end

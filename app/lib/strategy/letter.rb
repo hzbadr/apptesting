@@ -12,7 +12,7 @@ module Strategy
 
     private
       def page
-        Page::Html.new(PageFetcher.fetch(@url))
+        Page::Html.new(Page::Fetcher.fetch(@url))
       end
   end
 end
