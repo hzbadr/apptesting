@@ -21,3 +21,8 @@ The application should have:
 4 Location Groups, 3 of them with different provider and 1 would belong to any of them
 20 Locations of any type (city, region, state, etc.)
 4 root Target Groups and each root should start a tree which is minimium 3 levels deep (3 of them with different provider and 1 would belong to any of them)
+
+
+
+
+curl localhost:3000/v1/locations/us -H "Accept: application/vnd.panels.v1+json" -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1MjcxMzQ2Mjd9.cVFXvTiS6zrgFqWdxMcMfvLnwT1W59U7TmB7wZbRQbs" -H "Content-Type: application/json"

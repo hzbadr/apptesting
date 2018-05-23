@@ -1,9 +1,9 @@
 def generate_random_code
-  "1234"
+  SecureRandom.base64(4)
 end
 
 def generate_random_id
-  1234
+  (1..10).to_a.sample(5).join.to_i
 end
 
 PANEL_PROVIDERS = %w(Panel_1 Panel_2 Panel_3)
@@ -49,12 +49,23 @@ def create_children_for(group, count, nesting_level)
 
   count.times do |i|
     new_group = TargetGroup.create(name: "#{group.name}_#{i}", secret_code: generate_random_code,
-                                   external_id: generate_random_id, parent_id: group.id)
-    puts new_group.errors.full_messages
+                                   external_id: generate_random_id, parent_id: group.id,
+                                   panel_provider_id: group.panel_provider_id)
     create_children_for(new_group, rand(1..5), nesting_level - 1)
   end
 end
 
 root_groups.map do |group|
   create_children_for(group, rand(1..5), 3)
+end
+
+
+USERS = [
+  { name: "Foo Bar", email: "foo@example.com", password: "1234" },
+  { name: "Baz Foo", email: "baz@example.com", password: "1234" },
+  { name: "Bar Baz", email: "bar@example.com", password: "1234" }
+]
+
+users = USERS.map do |user|
+  User.create(user)
 end

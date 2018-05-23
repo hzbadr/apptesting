@@ -7,4 +7,8 @@ class TargetGroup < ApplicationRecord
   def self.roots
     where(parent_id: nil)
   end
+
+  def self.for_provider(provider_id)
+    where(panel_provider_id: provider_id)
+  end
 end
