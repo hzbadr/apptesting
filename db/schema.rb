@@ -12,32 +12,32 @@
 
 ActiveRecord::Schema.define(version: 2018_05_23_022208) do
 
-  create_table "countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "countries", force: :cascade do |t|
     t.string "country_code"
-    t.bigint "panel_provider_id"
+    t.integer "panel_provider_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["panel_provider_id"], name: "index_countries_on_panel_provider_id"
   end
 
-  create_table "location_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "location_groups", force: :cascade do |t|
     t.string "name"
-    t.bigint "country_id"
-    t.bigint "panel_provider_id"
+    t.integer "country_id"
+    t.integer "panel_provider_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["country_id"], name: "index_location_groups_on_country_id"
     t.index ["panel_provider_id"], name: "index_location_groups_on_panel_provider_id"
   end
 
-  create_table "location_groups_locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "location_id"
-    t.bigint "location_group_id"
+  create_table "location_groups_locations", force: :cascade do |t|
+    t.integer "location_id"
+    t.integer "location_group_id"
     t.index ["location_group_id"], name: "index_location_groups_locations_on_location_group_id"
     t.index ["location_id"], name: "index_location_groups_locations_on_location_id"
   end
 
-  create_table "locations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "locations", force: :cascade do |t|
     t.string "name"
     t.integer "external_id"
     t.string "secret_code"
@@ -45,25 +45,25 @@ ActiveRecord::Schema.define(version: 2018_05_23_022208) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "panel_providers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "panel_providers", force: :cascade do |t|
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "target_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "target_groups", force: :cascade do |t|
     t.string "name"
     t.integer "external_id"
-    t.bigint "parent_id"
+    t.integer "parent_id"
     t.string "secret_code"
-    t.bigint "panel_provider_id"
+    t.integer "panel_provider_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["panel_provider_id"], name: "index_target_groups_on_panel_provider_id"
     t.index ["parent_id"], name: "index_target_groups_on_parent_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
@@ -71,10 +71,4 @@ ActiveRecord::Schema.define(version: 2018_05_23_022208) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "countries", "panel_providers"
-  add_foreign_key "location_groups", "countries"
-  add_foreign_key "location_groups", "panel_providers"
-  add_foreign_key "location_groups_locations", "location_groups"
-  add_foreign_key "location_groups_locations", "locations"
-  add_foreign_key "target_groups", "panel_providers"
 end

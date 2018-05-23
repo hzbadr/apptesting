@@ -1,6 +1,6 @@
 Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
 
-Rack::Attack.throttle("requests by user", limit: 10, period: 2.minutes) do |request|
+Rack::Attack.throttle("requests by user", limit: 10, period: 1.minutes) do |request|
   request.get_header("HTTP_AUTHORIZATION") if request.path.include?('/public/')
 end
 
