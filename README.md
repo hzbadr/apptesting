@@ -35,4 +35,54 @@
   * There are things that didn't make sense to me, for example target group and country both has panel_provider_id, for API request #3 we get panel provider from country while it's accessible from both.
 
   * The relation beteen how to calculate the price and the country was not clear. So I decided to depend on the country creation order.
-  
+
+  * Nothing mentioned about the resonse, I returned the object as json.
+
+
+## Test Using Postman
+
+### login
+  * post localhost:3000/auth/login
+  * params { email: bar@example.com, password: 1234 }
+
+### locations
+  * get localhost:3000/locations/US
+  * headers { Accept: application/vnd.panels.v1+json, Authorization: TOKEN_FROM_LOGIN }
+  * response 
+    {
+      "locations": [
+        {
+          "id": 14,
+          "name": "New York",
+          "external_id": 68312,
+          "secret_code": "pCBiTQ==",
+          "created_at": "2018-05-23T15:17:21.805Z",
+          "updated_at": "2018-05-23T15:17:21.805Z"
+        }, ...
+      ]
+    }
+
+### Target Group 
+  * get localhost:3000/target_groups/US
+  * headers { Accept: application/vnd.panels.v1+json, Authorization: TOKEN_FROM_LOGIN }
+  * response 
+    {
+      "target_groups": [
+        {
+            "id": 3,
+            "name": "GROUP_3",
+            "external_id": 896107,
+            "parent_id": null,
+            "secret_code": "54FN9Q==",
+            "panel_provider_id": 3,
+            "created_at": "2018-05-23T15:17:22.319Z",
+            "updated_at": "2018-05-23T15:17:22.319Z"
+        },...
+      ]
+    }
+
+### Evaluate Target
+  * post localhost:3000/evaluate_target/
+  * headers { Accept: application/vnd.panels.v1+json, Authorization: TOKEN_FROM_LOGIN }
+  * params { locations[0][id]: 12, locations[0][panel_size]: 23, locations[1][id]: 12, locations[1][panel_size]: 23, country_code: US, target_group_id: 23}
+  * response { price": 10.23 }
