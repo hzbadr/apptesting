@@ -1,15 +1,14 @@
 class V1::TargetsController < ApplicationController
+  include SetCountry
+
   STRATEGIES = [Strategy::Letter, Strategy::Array, Strategy::Node]
 
   def evaluate
-    target = TargetForm.new(permitted_params[:country_code],
-                            permitted_params[:target_group_id],
-                            permitted_params[:locations].to_h)
     if target.valid?
       price = strategy.calculate_price
       json_response(price: price)
     else
-      json_response(errors: target.errors.full_messages)
+      json_response({ errors: target.errors.full_messages }, :unprocessable_entity)
     end
   end
 
@@ -19,12 +18,14 @@ class V1::TargetsController < ApplicationController
                                   locations: [:id, :panel_size])
     end
 
-    def target_group
-      TargetGroup.find(permitted_params[:target_group_id])
+    def target
+      @target ||= TargetForm.new(permitted_params[:country_code],
+                                 permitted_params[:target_group_id],
+                                 permitted_params[:locations].to_h)
     end
 
     def strategy
-      strategy_class = Hash[PanelProvider.pluck(:id).zip(STRATEGIES)][target_group.panel_provider_id]
+      strategy_class = Hash[PanelProvider.pluck(:id).zip(STRATEGIES)][country.panel_provider_id]
       strategy_class.new
     end
 end
