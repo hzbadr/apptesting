@@ -24,7 +24,7 @@
   * As for rack-attack, I decided not to white/black list any IPs.
   
   * Some sections on "http://time.com/" are fetched using AJAX. 
-    I am not sure if this is a known issue. I tried to fix it for about 2 hours, using chrome headless browser, but the performance was terrible and I had issues with getting it to work correctly. So, I decided to stick with the current implemntation. This slitely affected the Letter and Node counts.
+    I am not sure if this is a known issue. I tried to fix it for about 2 hours, using chrome headless browser, but the performance was terrible and I had issues with getting it to work correctly. So, I decided to stick with the current implemntation. This slightly affected the Letter and Node counts.
   
   * I also decided to search only for the small "a" letter.
   
